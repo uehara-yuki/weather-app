@@ -1,0 +1,16 @@
+.row {
+  text-align: center;
+  padding: 20px;
+}
+
+.date,
+.humidity,
+.wind,
+.weatherDescription {
+  font-size: 25px;
+  text-transform: capitalize;
+}
+
+.w-100 {
+  width: 100%;
+}

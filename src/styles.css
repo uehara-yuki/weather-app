@@ -1,0 +1,15 @@
+body {
+  background-image: url(../src/dogs2.png);
+  font-family: "Slabo 27px", serif;
+  margin: 32px;
+  display: block;
+  color: white;
+}
+
+.container {
+  border-radius: 10px;
+  margin: auto;
+  padding: 60px 140px;
+  display: block;
+  max-width: 900px;
+}
