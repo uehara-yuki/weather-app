@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import FormattedDate from "./FormattedDate";
 import "./CurrentWeather.css";
 
 
@@ -14,6 +15,7 @@ export default function CurrentWeather() {
       description: response.data.weather[0].description,
       humidity: response.data.main.humidity,
       wind: response.data.wind.speed,
+      date: new Date (response.data.dt * 1000),
 
     });
   }
@@ -23,7 +25,7 @@ if (weatherData.ready) {
       <div className="col-6">
         Last Uptaded:{" "}
         <div className="date" id="date">
-          Friday 14:30{" "}
+          < FormattedDate date ={weatherData.date} />{" "}
         </div>
         <img
           src="http://openweathermap.org/img/wn/01d@2x.png"
