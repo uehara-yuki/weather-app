@@ -17,7 +17,7 @@ ReactDOM.render(
       <Header />
       <Forms />
       <Temperature />
-      <CurrentWeather />
+      <CurrentWeather defaultCity="New York"/>
       <Forecast />
       <Footer />
     </div>

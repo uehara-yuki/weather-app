@@ -7,6 +7,7 @@ import "./CurrentWeather.css";
 
 export default function CurrentWeather() {
   const [weatherData, setWeatherData]= useState ({ready: false});
+  const [city, setCity]= useState (props.defaultCity);
   
   function handleResponse(response){
     console.log(response.data)
@@ -53,7 +54,7 @@ if (weatherData.ready) {
 } else {
   
 const apiKey="c25c2e288aa866c69cd6db4b9732a68a";
-let city= "New York";
+
 let apiUrl =`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 
 axios.get(apiUrl).then(handleResponse);

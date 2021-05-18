@@ -1,12 +1,24 @@
-import React from "react";
+import React, {useState} from "react";
 
 import "./Forms.css";
 
+function handleSubmit(event){
+  event.preventDefault();
+}
+
+function handleCityChange(event){
+ setCity(event.target.value);
+}
+
 export default function Forms() {
+
+const [weatherData, setWeatherData]= useState ({ready: false});
+const [city, setCity]= useState (props.defaultCity);
+
   return (
     <div className="Forms">
       <h1 className="h1">
-        <form id="search-form">
+        <form onSubmit= {handleSubmit} id="search-form">
           <span className="typeCityButton">
             <input
               type="text"
@@ -14,6 +26,7 @@ export default function Forms() {
               autofocus="on"
               autocomplete="off"
               id="type-city"
+              onChange={handleCityChange}
             />
           </span>
           <span className="searchButton">
