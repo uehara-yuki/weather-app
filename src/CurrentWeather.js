@@ -5,7 +5,7 @@ import "./CurrentWeather.css";
 
 
 
-export default function CurrentWeather() {
+export default function CurrentWeather(props) {
   const [weatherData, setWeatherData]= useState ({ready: false});
   const [city, setCity]= useState (props.defaultCity);
   
@@ -13,16 +13,38 @@ export default function CurrentWeather() {
     console.log(response.data)
     setWeatherData ({
       ready:true,
+      coordinates: response.data.coord,
       description: response.data.weather[0].description,
       humidity: response.data.main.humidity,
       wind: response.data.wind.speed,
       date: new Date (response.data.dt * 1000),
+      icon: response.data.weather[0].icon,
+      city: response.data.name,
 
     });
   }
+
+  function handleSubmit(event){
+    event.preventDefault();
+    search ();
+  }
+
+  function handleCityChange(event){
+    setCity(event.target.value);
+  }
+  function search (){
+    const apiKey="c25c2e288aa866c69cd6db4b9732a68a";
+
+    let apiUrl =`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+
+     axios.get(apiUrl).then(handleResponse);
+
+  }
+
 if (weatherData.ready) {
   return (
     <div className="row">
+  
       <div className="col-6">
         Last Uptaded:{" "}
         <div className="date" id="date">
@@ -52,15 +74,8 @@ if (weatherData.ready) {
     </div>
   );
 } else {
-  
-const apiKey="c25c2e288aa866c69cd6db4b9732a68a";
-
-let apiUrl =`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-
-axios.get(apiUrl).then(handleResponse);
+  search ();
+  return 
+  "Loading...";
 }
-return (
-  "Loading..."
-);
-  
 }

@@ -15,7 +15,7 @@ ReactDOM.render(
   <StrictMode>
     <div className="container">
       <Header />
-      <Forms />
+      <Forms defaultCity="New York"/>
       <Temperature />
       <CurrentWeather defaultCity="New York"/>
       <Forecast />
